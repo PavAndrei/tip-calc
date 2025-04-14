@@ -6,30 +6,34 @@ import { tipSizeButtons } from "../../constants";
 export const ButtonsGrid = ({ label, name, type, value }) => {
   const { handleChange, handleTipSelect } = useContext(TipContext);
 
+  const isNotIncluded = !tipSizeButtons.includes(+value);
+
   return (
     <div>
-      <p>{label}</p>
-      <div className={styles.grid}>
-        {tipSizeButtons.map((btn) => (
-          <button
-            className={styles.item}
-            type="button"
-            onClick={() => handleTipSelect(btn)}
-            key={btn}
-          >
-            {btn}
-          </button>
-        ))}
+      <label className={styles.tip}>
+        <p className={styles.label}>{label}</p>
+        <div className={styles.grid}>
+          {tipSizeButtons.map((btn) => (
+            <button
+              className={styles.item}
+              type="button"
+              onClick={() => handleTipSelect(btn)}
+              key={btn}
+            >
+              {btn}
+            </button>
+          ))}
 
-        <input
-          className={styles.input}
-          name={name}
-          type={type}
-          placeholder="Custom"
-          value={value}
-          onChange={(e) => handleChange(e)}
-        />
-      </div>
+          <input
+            className={styles.input}
+            name={name}
+            type={type}
+            placeholder="Custom"
+            value={isNotIncluded ? value : "CUSTOM"}
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+      </label>
     </div>
   );
 };

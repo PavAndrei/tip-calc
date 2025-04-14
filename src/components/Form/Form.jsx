@@ -12,23 +12,24 @@ export const Form = () => {
   return (
     <form className={styles.form}>
       {Object.keys(formData).map((item) => {
-        if (item === "tip") {
-          return (
-            <ButtonsGrid
-              key={item}
-              name={item}
-              label={formData[item].label}
-              type={formData[item].type}
-              value={formData[item].value}
-            />
-          );
-        } else {
+        if (item !== "tip") {
           return (
             <Input
               key={item}
               name={item}
               label={formData[item].label}
               min={formData[item].min}
+              type={formData[item].type}
+              value={formData[item].value}
+              placeholder={formData[item].placeholder}
+            />
+          );
+        } else {
+          return (
+            <ButtonsGrid
+              key={item}
+              name={item}
+              label={formData[item].label}
               type={formData[item].type}
               value={formData[item].value}
             />

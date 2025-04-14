@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import styles from "./styles.module.css";
 import { TipContext } from "../../context/TipContext";
 
-export const Input = ({ name, label, type, value, min }) => {
+import styles from "./styles.module.css";
+
+export const Input = ({ name, label, type, value, min, placeholder }) => {
   const { handleChange } = useContext(TipContext);
 
   return (
@@ -14,8 +15,8 @@ export const Input = ({ name, label, type, value, min }) => {
         name={name}
         value={value}
         type={type}
-        placeholder="$"
         min={min}
+        placeholder={placeholder}
       />
     </label>
   );

@@ -1,23 +1,11 @@
 import { createContext, useEffect, useState } from "react";
+import { formDataInitialState, tipInitialState } from "../constants";
 
 export const TipContext = createContext();
 
 export const TipProvider = ({ children }) => {
-  const [formData, setFormData] = useState({
-    bill: { label: "Bill", value: "", type: "number", min: "0" },
-    tip: { label: "Select Tip %", value: "15", type: "number", min: "0" },
-    visitors: {
-      label: "Number of People",
-      value: "0",
-      type: "number",
-      min: "1",
-    },
-  });
-
-  const [tip, setTip] = useState([
-    { name: "tip", description: "Tip Amount", value: 0 },
-    { name: "total", description: "Total", value: 0 },
-  ]);
+  const [formData, setFormData] = useState(formDataInitialState);
+  const [tip, setTip] = useState(tipInitialState);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -58,13 +46,18 @@ export const TipProvider = ({ children }) => {
     ]);
   };
 
+  const reset = () => {
+    setFormData(formDataInitialState);
+    setTip(tipInitialState);
+  };
+
   useEffect(() => {
     calculateTotal();
   }, [formData]);
 
   return (
     <TipContext.Provider
-      value={{ formData, handleChange, tip, handleTipSelect }}
+      value={{ formData, handleChange, tip, handleTipSelect, reset }}
     >
       {children}
     </TipContext.Provider>
