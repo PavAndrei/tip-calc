@@ -1,0 +1,14 @@
+.calculator {
+  border-radius: 12px;
+  background-color: var(--white);
+
+  max-width: 60%;
+  max-height: 50%;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 40px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}

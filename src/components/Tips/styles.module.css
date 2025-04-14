@@ -1,0 +1,30 @@
+.tips {
+  background-color: var(--green-900);
+  border-radius: 12px;
+  padding: 40px;
+  padding-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  color: var(--green-900);
+  background-color: var(--green-400);
+  border: 1px solid var(--green-400);
+  border-radius: 8px;
+
+  cursor: pointer;
+}
