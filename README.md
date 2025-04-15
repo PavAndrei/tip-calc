@@ -43,7 +43,6 @@ Users should be able to:
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- Mobile-first workflow
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/) – for fast development setup
 - Context API for state management
