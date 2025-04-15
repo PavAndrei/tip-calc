@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here]()
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/responsive-react-vite-tip-calculator-app-0GeCdeOIMN)
 - Live Site URL: [Add live site URL here](https://tip-calc-kappa.vercel.app/)
 
 ## My process
