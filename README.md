@@ -71,5 +71,5 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/PavAndrei)
-- GitHub - [@yourusername](https://github.com/PavAndrei)
+- Frontend Mentor - [@My Frontend Mentor account](https://www.frontendmentor.io/profile/PavAndrei)
+- GitHub - [@My GitHub](https://github.com/PavAndrei)
