@@ -1,26 +1,23 @@
 import { useContext } from "react";
-import styles from "./styles.module.css";
 import { TipContext } from "../../context/TipContext";
-import { tipSizeButtons } from "../../constants/constants";
+
+import { TIP_SIZE_BUTTONS } from "../../constants/constants";
+
+import { Button } from "../Button/Button";
+
+import styles from "./styles.module.css";
 
 export const ButtonsGrid = ({ label, name, value }) => {
-  const { handleChange, handleTipSelect } = useContext(TipContext);
+  const { handleChange } = useContext(TipContext);
 
-  const isNotIncluded = !tipSizeButtons.includes(+value);
+  const isNotIncluded = !TIP_SIZE_BUTTONS.includes(+value);
 
   return (
     <div className={styles.tip}>
       <p className={styles.label}>{label}</p>
       <div className={styles.grid}>
-        {tipSizeButtons.map((btn) => (
-          <button
-            className={styles.item}
-            type="button"
-            onClick={() => handleTipSelect(btn)}
-            key={btn}
-          >
-            {btn}%
-          </button>
+        {TIP_SIZE_BUTTONS.map((btn) => (
+          <Button key={btn} btn={btn} />
         ))}
 
         <input
@@ -28,6 +25,7 @@ export const ButtonsGrid = ({ label, name, value }) => {
           name={name}
           type="text"
           placeholder="Custom"
+          autoComplete="off"
           value={isNotIncluded ? value : ""}
           onChange={(e) => handleChange(e)}
         />

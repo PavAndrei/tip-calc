@@ -18,7 +18,7 @@
 
 .icon {
   position: absolute;
-  top: 15%;
+  top: 25%;
   left: 5%;
 }
 
@@ -39,12 +39,8 @@
   transition: all 0.3s ease-in;
 }
 
+.input:focus,
 .input:hover {
-  outline: 2px solid var(--green-400);
-  box-shadow: none;
-}
-
-.input:focus {
   outline: 2px solid var(--green-400);
   box-shadow: none;
 }

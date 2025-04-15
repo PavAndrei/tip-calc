@@ -18,7 +18,6 @@ export const Form = () => {
               key={item}
               name={item}
               label={formData[item].label}
-              min={formData[item].min}
               value={formData[item].value}
             />
           );

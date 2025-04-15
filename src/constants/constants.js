@@ -1,29 +1,32 @@
-export const tipSizeButtons = [5, 10, 15, 25, 50];
+export const TIP_SIZE_BUTTONS = [5, 10, 15, 25, 50];
 
-export const formDataInitialState = {
+export const FORM_DATA_INITIAL_STATE = {
   bill: {
     name: "bill",
     label: "Bill",
-    value: "0",
-    min: "0",
+    value: "",
     tabindex: 1,
   },
   tip: {
     name: "tip",
     label: "Select Tip %",
     value: "",
-    min: "0",
   },
   visitors: {
     name: "customers",
     label: "Number of People",
-    value: "0",
-    min: "1",
+    value: "",
     tabindex: 7,
   },
 };
 
-export const tipInitialState = [
+export const TIP_INITIAL_STATE = [
   { name: "tip", description: "Tip Amount", value: 0 },
   { name: "total", description: "Total", value: 0 },
 ];
+
+export const ERRORS_INITIAL_STATE = {
+  bill: "",
+  visitors: "",
+  tip: "",
+};

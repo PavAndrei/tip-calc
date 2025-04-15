@@ -13,7 +13,7 @@ export const validatorConfig = {
     notEndWithDots: { message: "Tip cannot end with a dot" },
     tooManyDecimals: { message: "Tip has no more 2 decimals" },
   },
-  customers: {
+  visitors: {
     isRequired: { message: "Customers is required" },
     mustBeANumber: { message: "Customers must be a number" },
     notBeZero: { message: "Customers cannot be zero" },

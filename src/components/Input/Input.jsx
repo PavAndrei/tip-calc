@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 import { Dollar } from "../../icons/Dollar";
 import { Person } from "../../icons/Person";
 
-export const Input = ({ name, label, value, min }) => {
+export const Input = ({ name, label, value }) => {
   const { handleChange, errors } = useContext(TipContext);
 
   return (
@@ -26,12 +26,13 @@ export const Input = ({ name, label, value, min }) => {
           </span>
         )}
         <input
+          autoComplete="off"
           onChange={(e) => handleChange(e)}
           className={styles.input}
           name={name}
           value={value}
           type="text"
-          min={min}
+          placeholder="0"
         />
       </div>
     </label>

@@ -1,0 +1,27 @@
+.item,
+.itemActive {
+  color: var(--white);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.item {
+  background-color: var(--green-900);
+  border: 1px solid var(--green-900);
+  transition: all 0.3s ease-in;
+}
+
+.item:focus,
+.item:hover {
+  background-color: var(--green-400);
+  outline: 1px solid var(--green-400);
+  border: 1px solid var(--green-400);
+}
+
+.itemActive {
+  background-color: var(--green-400);
+  border: 1px solid var(--green-400);
+  outline: 1px solid var(--green-400);
+  color: var(--green-900);
+}

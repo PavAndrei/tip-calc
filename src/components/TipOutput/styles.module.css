@@ -16,6 +16,7 @@
 
 .subtext {
   color: var(--grey-400);
+  text-wrap: nowrap;
 }
 
 .tip {

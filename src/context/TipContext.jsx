@@ -1,82 +1,58 @@
 import { createContext, useEffect, useState } from "react";
-import { formDataInitialState, tipInitialState } from "../constants/constants";
+import {
+  ERRORS_INITIAL_STATE,
+  FORM_DATA_INITIAL_STATE,
+  TIP_INITIAL_STATE,
+} from "../constants/constants";
 
 import { validate } from "../utils/validate";
+import { calculateTotal } from "../utils/calculateTotal";
+import { isDisabled } from "../utils/isDisabled";
 
 export const TipContext = createContext();
 
 export const TipProvider = ({ children }) => {
-  const [formData, setFormData] = useState(formDataInitialState);
-  const [tip, setTip] = useState(tipInitialState);
-  const [errors, setErrors] = useState({
-    bill: "",
-    visitors: "",
-    tip: "",
-  });
+  const [formData, setFormData] = useState(FORM_DATA_INITIAL_STATE);
+  const [tip, setTip] = useState(TIP_INITIAL_STATE);
+  const [errors, setErrors] = useState(ERRORS_INITIAL_STATE);
 
-  const isResetDisabled = Object.keys(formData).every(
-    (key) => formData[key].value === "" || formData[key].value === "0"
-  );
+  const isResetDisabled = isDisabled(formData);
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-
-    validator(name, value);
-
+  const handleChange = ({ target: { name, value } }) => {
     if (value === "" || /^\d*\.?\d*$/.test(value)) {
+      validator(name, value);
       setFormData((prev) => ({
         ...prev,
-        [name]: { ...prev[name], value: e.target.value },
+        [name]: { ...prev[name], value },
       }));
     }
   };
 
-  const handleTipSelect = (num) => {
-    setFormData((prev) => {
-      return {
-        ...prev,
-        tip: { ...prev.tip, value: num },
-      };
-    });
-  };
-
-  const calculateTotal = () => {
-    const bill = parseFloat(formData.bill.value);
-    const visitors = parseInt(formData.visitors.value);
-
-    if (isNaN(bill) || isNaN(visitors) || visitors <= 0 || bill < 0) {
-      return 0;
-    }
-
-    const tip = +formData.tip.value;
-
-    const tipAmount = Math.ceil(((bill / 100) * tip) / visitors);
-    const totalAmount = Math.ceil(bill / visitors + tipAmount);
-
-    setTip([
-      { name: "tip", description: "Tip Amount", value: tipAmount },
-      { name: "total", description: "Total", value: totalAmount },
-    ]);
-  };
+  const handleTipSelect = (num) =>
+    setFormData((prev) => ({
+      ...prev,
+      tip: { ...prev.tip, value: num },
+    }));
 
   const reset = () => {
-    setFormData(formDataInitialState);
-    setTip(tipInitialState);
+    setFormData(FORM_DATA_INITIAL_STATE);
+    setTip(TIP_INITIAL_STATE);
+    setErrors(ERRORS_INITIAL_STATE);
   };
 
   const validator = (name, value) => {
     const error = validate(name, value);
-
-    setErrors((prev) => {
-      return {
-        ...prev,
-        [name]: error,
-      };
-    });
+    setErrors((prev) => ({ ...prev, [name]: error }));
+    return error;
   };
 
   useEffect(() => {
-    calculateTotal();
+    const [tipAmount, totalAmount] = calculateTotal(
+      formData.bill.value,
+      formData.visitors.value,
+      +formData.tip.value
+    );
+    setTip([tipAmount, totalAmount]);
   }, [formData]);
 
   return (
