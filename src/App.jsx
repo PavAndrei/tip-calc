@@ -1,7 +1,7 @@
 import { Calculator } from "./components/Calculator/Calculator";
 import { Container } from "./components/Container/Container";
 import { Form } from "./components/Form/Form";
-import { Tips } from "./components/Tips/Tips";
+import { Tip } from "./components/Tip/Tip";
 import { TipProvider } from "./context/TipContext";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Container>
         <Calculator>
           <Form />
-          <Tips />
+          <Tip />
         </Calculator>
       </Container>
     </TipProvider>

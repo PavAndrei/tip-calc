@@ -19,9 +19,7 @@ export const Form = () => {
               name={item}
               label={formData[item].label}
               min={formData[item].min}
-              type={formData[item].type}
               value={formData[item].value}
-              placeholder={formData[item].placeholder}
             />
           );
         } else {
@@ -30,7 +28,6 @@ export const Form = () => {
               key={item}
               name={item}
               label={formData[item].label}
-              type={formData[item].type}
               value={formData[item].value}
             />
           );

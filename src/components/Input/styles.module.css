@@ -6,9 +6,24 @@
 
 .label {
   color: var(--grey-500);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 15%;
+  left: 5%;
 }
 
 .input {
+  width: 100%;
   text-align: right;
   background-color: var(--grey-50);
   border: 1px solid var(--grey-50);
@@ -20,6 +35,13 @@
   -webkit-appearance: none;
   -moz-appearance: textfield;
   appearance: none;
+
+  transition: all 0.3s ease-in;
+}
+
+.input:hover {
+  outline: 2px solid var(--green-400);
+  box-shadow: none;
 }
 
 .input:focus {
@@ -31,4 +53,10 @@
 .input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.error {
+  text-align: right;
+  color: var(--danger);
+  font-size: 14px;
 }

@@ -1,14 +1,27 @@
 import { createContext, useEffect, useState } from "react";
-import { formDataInitialState, tipInitialState } from "../constants";
+import { formDataInitialState, tipInitialState } from "../constants/constants";
+
+import { validate } from "../utils/validate";
 
 export const TipContext = createContext();
 
 export const TipProvider = ({ children }) => {
   const [formData, setFormData] = useState(formDataInitialState);
   const [tip, setTip] = useState(tipInitialState);
+  const [errors, setErrors] = useState({
+    bill: "",
+    visitors: "",
+    tip: "",
+  });
+
+  const isResetDisabled = Object.keys(formData).every(
+    (key) => formData[key].value === "" || formData[key].value === "0"
+  );
 
   const handleChange = (e) => {
     const { value, name } = e.target;
+
+    validator(name, value);
 
     if (value === "" || /^\d*\.?\d*$/.test(value)) {
       setFormData((prev) => ({
@@ -51,13 +64,32 @@ export const TipProvider = ({ children }) => {
     setTip(tipInitialState);
   };
 
+  const validator = (name, value) => {
+    const error = validate(name, value);
+
+    setErrors((prev) => {
+      return {
+        ...prev,
+        [name]: error,
+      };
+    });
+  };
+
   useEffect(() => {
     calculateTotal();
   }, [formData]);
 
   return (
     <TipContext.Provider
-      value={{ formData, handleChange, tip, handleTipSelect, reset }}
+      value={{
+        formData,
+        handleChange,
+        tip,
+        handleTipSelect,
+        reset,
+        isResetDisabled,
+        errors,
+      }}
     >
       {children}
     </TipContext.Provider>

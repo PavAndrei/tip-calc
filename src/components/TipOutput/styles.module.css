@@ -4,6 +4,12 @@
   align-items: flex-start;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .text {
   color: var(--white);
 }

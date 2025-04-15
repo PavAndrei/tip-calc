@@ -2,20 +2,23 @@ export const tipSizeButtons = [5, 10, 15, 25, 50];
 
 export const formDataInitialState = {
   bill: {
+    name: "bill",
     label: "Bill",
-    value: "",
-    type: "number",
+    value: "0",
     min: "0",
-    placeholder: "0",
     tabindex: 1,
   },
-  tip: { label: "Select Tip %", value: "15", type: "number", min: "0" },
-  visitors: {
-    label: "Number of People",
+  tip: {
+    name: "tip",
+    label: "Select Tip %",
     value: "",
-    type: "number",
+    min: "0",
+  },
+  visitors: {
+    name: "customers",
+    label: "Number of People",
+    value: "0",
     min: "1",
-    placeholder: "0",
     tabindex: 7,
   },
 };

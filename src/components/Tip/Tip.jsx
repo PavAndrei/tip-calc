@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { TipOutput } from "../TipOutput/TipOutput";
-import styles from "./styles.module.css";
 import { TipContext } from "../../context/TipContext";
 
-export const Tips = () => {
-  const { tip, reset } = useContext(TipContext);
+import { TipOutput } from "../TipOutput/TipOutput";
+
+import styles from "./styles.module.css";
+
+export const Tip = () => {
+  const { tip, reset, isResetDisabled } = useContext(TipContext);
 
   return (
     <div className={styles.tips}>
@@ -17,7 +19,11 @@ export const Tips = () => {
           />
         ))}
       </div>
-      <button onClick={reset} className={styles.reset}>
+      <button
+        onClick={reset}
+        disabled={isResetDisabled}
+        className={styles.reset}
+      >
         Reset
       </button>
     </div>
